@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/br"
+            android:title="Brasil" />
+        <item
+            android:id="@+id/ac"
+            android:title="Acre" />
+        <item
+            android:id="@+id/al"
+            android:title="Alagoas" />
+        <item
+            android:id="@+id/am"
+            android:title="Amazonas" />
+        <item
+            android:id="@+id/ap"
+            android:title="Amapá" />
+        <item
+            android:id="@+id/ba"
+            android:title="Bahia" />
+        <item
+            android:id="@+id/ce"
+            android:title="Ceará" />
+        <item
+            android:id="@+id/df"
+            android:title="Distrito Federal" />
+        <item
+            android:id="@+id/es"
+            android:title="Espírito Santo" />
+        <item
+            android:id="@+id/go"
+            android:title="Goiás" />
+        <item
+            android:id="@+id/ma"
+            android:title="Maranhão" />
+        <item
+            android:id="@+id/mg"
+            android:title="Minas Gerais" />
+        <item
+            android:id="@+id/ms"
+            android:title="Mato Grosso do Sul" />
+        <item
+            android:id="@+id/mt"
+            android:title="Mato Grosso" />
+        <item
+            android:id="@+id/pa"
+            android:title="Pará" />
+        <item
+            android:id="@+id/pb"
+            android:title="Paraíba" />
+        <item
+            android:id="@+id/pe"
+            android:title="Pernambuco" />
+        <item
+            android:id="@+id/pi"
+            android:title="Piauí" />
+        <item
+            android:id="@+id/pr"
+            android:title="Paraná" />
+        <item
+            android:id="@+id/rj"
+            android:title="Rio de Janeiro" />
+        <item
+            android:id="@+id/rn"
+            android:title="Rio Grande do Norte" />
+        <item
+            android:id="@+id/ro"
+            android:title="Rondônia" />
+        <item
+            android:id="@+id/rr"
+            android:title="Roraima" />
+        <item
+            android:id="@+id/rs"
+            android:title="Rio Grande do Sul" />
+        <item
+            android:id="@+id/sc"
+            android:title="Santa Catarina" />
+        <item
+            android:id="@+id/se"
+            android:title="Sergipe" />
+        <item
+            android:id="@+id/sp"
+            android:title="São Paulo" />
+        <item
+            android:id="@+id/to"
+            android:title="Tocantins" />
+    </group>
+
+    <group android:id="@+id/menu_bottom"
+        android:checkableBehavior="none">
+        <item
+            android:id="@+id/close"
+            android:title="Sair" >
+        </item>
+    </group>
+
+</menu>
