@@ -1,8 +1,10 @@
 package hackpuc.vedor;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.ActivityCompat;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -78,21 +80,77 @@ public class MainActivity extends AppCompatActivity
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
-        int id = item.getItemId();
-
-      /*  if (id == R.id.nav_camera) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
-
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
-
-        }*/
+        switch (item.getItemId()){
+            case R.id.nav_br:
+                break;
+          /*  case R.id.ac:
+                break;
+            case R.id.al:
+                break;
+            case R.id.am:
+                break;
+            case R.id.ap:
+                break;
+            case R.id.ba:
+                break;
+            case R.id.ce:
+                break;
+            case R.id.df:
+                break;
+            case R.id.es:
+                break;
+            case R.id.go:
+                break;
+            case R.id.ma:
+                break;
+            case R.id.mg:
+                break;
+            case R.id.ms:
+                break;
+            case R.id.mt:
+                break;
+            case R.id.pa:
+                break;
+            case R.id.pb:
+                break;
+            case R.id.pe:
+                break;
+            case R.id.pi:
+                break;
+            case R.id.pr:
+                break;
+            case R.id.rj:
+                break;
+            case R.id.rn:
+                break;
+            case R.id.ro:
+                break;
+            case R.id.rr:
+                break;
+            case R.id.rs:
+                break;
+            case R.id.sc:
+                break;
+            case R.id.se:
+                break;
+            case R.id.sp:
+                break;
+            case R.id.to:
+                break;*/
+            case R.id.nav_n:
+                break;
+            case R.id.nav_ne:
+                break;
+            case R.id.nav_co:
+                break;
+            case R.id.nav_se:
+                break;
+            case R.id.nav_s:
+                break;
+            case R.id.close:
+                ActivityCompat.finishAffinity(this);
+                break;
+        }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

@@ -3,9 +3,9 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/br"
+            android:id="@+id/nav_br"
             android:title="Brasil" />
-        <item
+      <!--  <item
             android:id="@+id/ac"
             android:title="Acre" />
         <item
@@ -85,7 +85,22 @@
             android:title="São Paulo" />
         <item
             android:id="@+id/to"
-            android:title="Tocantins" />
+            android:title="Tocantins" />-->
+        <item
+            android:id="@+id/nav_n"
+            android:title="Norte" />
+        <item
+            android:id="@+id/nav_ne"
+            android:title="Nordeste" />
+        <item
+            android:id="@+id/nav_co"
+            android:title="Centro-Oeste" />
+        <item
+            android:id="@+id/nav_se"
+            android:title="Sudeste" />
+        <item
+            android:id="@+id/nav_s"
+            android:title="Sul" />
     </group>
 
     <group android:id="@+id/menu_bottom"
