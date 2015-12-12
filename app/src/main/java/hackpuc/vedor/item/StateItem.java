@@ -5,7 +5,7 @@ package hackpuc.vedor.item;
  */
 public class StateItem {
 
-    private int imageState;
+    private int    imageState;
     private String nameState;
     private String codeState;
 

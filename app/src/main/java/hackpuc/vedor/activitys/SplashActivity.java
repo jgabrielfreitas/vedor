@@ -58,7 +58,7 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
     private void doRequest(){
 
         // request Parse datas
-        ParseManager.createCustomParserRequest(this, ParseManager.POLITICS)
+        ParseManager.createCustomParserRequest(this)
                     .addWhereStartWith(ParseFields.POLITIC_NAME, "AÉCIO")
                     .addWhereEqualsTo(ParseFields.POLITIC_DESC_TURN, "NÃO ELEITO")
                     .setParseCallback(new ParseCallback() {

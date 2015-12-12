@@ -9,13 +9,20 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
+
+import com.parse.ParseException;
+import com.parse.ParseObject;
 
 import java.util.List;
 
 import hackpuc.vedor.R;
 import hackpuc.vedor.adapter.StateAdapter;
+import hackpuc.vedor.interfaces.ParseCallback;
 import hackpuc.vedor.item.StateItem;
 import hackpuc.vedor.activitys.StateActivity;
+import hackpuc.vedor.utils.ParseFields;
+import hackpuc.vedor.utils.ParseManager;
 
 
 /**
@@ -28,9 +35,7 @@ public class MainFragment extends Fragment implements AdapterView.OnItemClickLis
 
     private List<StateItem> stateItemList;
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         view = inflater.inflate(R.layout.fragment_main, container, false);
 
@@ -48,7 +53,6 @@ public class MainFragment extends Fragment implements AdapterView.OnItemClickLis
         this.stateItemList = stateItemList;
     }
 
-    @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
         Intent intent = new Intent(getActivity(), StateActivity.class);

@@ -13,7 +13,7 @@ public class ParseManager {
         return new ParseRequest(classToRequest);
     }
 
-    public static CustomParseRequest createCustomParserRequest(Context context, String classToRequest) {
-        return new CustomParseRequest(context, classToRequest);
+    public static CustomParseRequest createCustomParserRequest(Context context) {
+        return new CustomParseRequest(context, POLITICS);
     }
 }
