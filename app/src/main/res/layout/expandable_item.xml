@@ -16,19 +16,18 @@
 
         <ImageView
             android:id="@+id/partyImageView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_alignParentLeft="true"
-            android:src="@drawable/ic_acre" />
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="@dimen/half_space_default"
+            android:src="@drawable/ic_pstu" />
 
         <TextView
             android:id="@+id/nameTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Suzi Rego Grande"
-            android:textSize="18sp"
-            android:layout_marginLeft="24dp"
+            android:textSize="13sp"
+            android:layout_marginLeft="@dimen/half_space_default"
             android:layout_toRightOf="@+id/partyImageView"
             android:layout_toEndOf="@+id/partyImageView" />
 
@@ -36,12 +35,11 @@
             android:id="@+id/favoriteCheckBox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="10dp"
+            android:layout_marginRight="@dimen/half_space_default"
             style="?android:attr/starStyle"
             android:layout_alignTop="@+id/nameTextView"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true" />
-
 
         <TextView
             android:id="@+id/partyTextView"
@@ -49,8 +47,8 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/nameTextView"
             android:text="PSTU - 16"
-            android:textSize="18sp"
-            android:layout_marginLeft="24dp"
+            android:textSize="13sp"
+            android:layout_marginLeft="@dimen/half_space_default"
             android:layout_toRightOf="@+id/partyImageView"
             android:layout_toEndOf="@+id/partyImageView" />
 
@@ -60,10 +58,11 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/partyTextView"
             android:text="Suplente"
-            android:textSize="18sp"
-            android:layout_marginLeft="24dp"
+            android:textSize="13sp"
+            android:layout_marginLeft="@dimen/half_space_default"
             android:layout_toRightOf="@+id/partyImageView"
             android:layout_toEndOf="@+id/partyImageView" />
+
 
     </RelativeLayout>
 

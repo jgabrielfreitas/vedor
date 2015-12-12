@@ -36,8 +36,13 @@
             android:name="com.parse.CLIENT_KEY"
             android:value="td6YRtXiicaU6nTaRt4oOCcvJcNkFtcsrmUWWWeQ" />
 
-        <activity android:name=".activitys.StateActivity" />
-        <activity android:name=".activitys.CandidateActivity"></activity>
+        <activity
+            android:name=".activitys.StateActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize" />
+        <activity
+            android:name=".activitys.CandidateActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/candidate"/>
     </application>
 
 </manifest>
