@@ -1,8 +1,5 @@
 package hackpuc.vedor.adapter;
 
-import java.util.HashMap;
-import java.util.List;
-
 import android.content.Context;
 import android.graphics.Typeface;
 import android.support.v7.widget.CardView;
@@ -14,6 +11,9 @@ import android.widget.BaseExpandableListAdapter;
 import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import java.util.HashMap;
+import java.util.List;
 
 import hackpuc.vedor.R;
 import hackpuc.vedor.objects.Politic;

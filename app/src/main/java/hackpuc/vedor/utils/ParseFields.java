@@ -1,5 +1,8 @@
 package hackpuc.vedor.utils;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 /**
  * Created by JGabrielFreitas on 11/12/15.
  */

@@ -36,7 +36,8 @@
             android:name="com.parse.CLIENT_KEY"
             android:value="td6YRtXiicaU6nTaRt4oOCcvJcNkFtcsrmUWWWeQ" />
 
-        <activity android:name=".activitys.StateActivity"></activity>
+        <activity android:name=".activitys.StateActivity" />
+        <activity android:name=".activitys.CandidateActivity"></activity>
     </application>
 
 </manifest>

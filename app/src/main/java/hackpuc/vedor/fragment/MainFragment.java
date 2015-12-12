@@ -9,20 +9,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.Toast;
-
-import com.parse.ParseException;
-import com.parse.ParseObject;
 
 import java.util.List;
 
 import hackpuc.vedor.R;
-import hackpuc.vedor.adapter.StateAdapter;
-import hackpuc.vedor.interfaces.ParseCallback;
-import hackpuc.vedor.item.StateItem;
 import hackpuc.vedor.activitys.StateActivity;
-import hackpuc.vedor.utils.ParseFields;
-import hackpuc.vedor.utils.ParseManager;
+import hackpuc.vedor.adapter.StateAdapter;
+import hackpuc.vedor.item.StateItem;
 
 
 /**
