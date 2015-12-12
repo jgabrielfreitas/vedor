@@ -30,14 +30,19 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 
+import com.activeandroid.Model;
+import com.activeandroid.query.Select;
+import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseObject;
+import com.parse.ParseQuery;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import hackpuc.vedor.R;
 import hackpuc.vedor.adapter.OfficeAdapter;
+import hackpuc.vedor.database.Favorite;
 import hackpuc.vedor.fragment.MainFragment;
 import hackpuc.vedor.interfaces.ParseCallback;
 import hackpuc.vedor.item.StateItem;
@@ -49,7 +54,6 @@ public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     public static List<Politic> politicList;
-
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -206,6 +210,16 @@ public class MainActivity extends AppCompatActivity
                 break;
             case R.id.nav_check:
 
+                politicList = new ArrayList<>();
+
+                Select select = new Select();
+                for (Model model : select.all().from(Favorite.class).execute())
+                    politicList.add(((Favorite) model).getPolitic());
+
+                Intent intent = new Intent(this, CandidateActivity.class);
+                intent.putExtra("from", "main");
+                startActivity(intent);
+
                 break;
             case R.id.close:
                 ActivityCompat.finishAffinity(this);
@@ -263,7 +277,6 @@ public class MainActivity extends AppCompatActivity
                                         Log.e("Response", "Name:" + new Politic(parseObject));
                                         politicList.add(new Politic(parseObject));
                                     }
-//                                  Log.e("Response", "Total of rows: " + parseObjects.size());
                                     Intent intent = new Intent(getActivity(), CandidateActivity.class);
                                     intent.putExtra("from", "main");
                                     startActivity(intent);

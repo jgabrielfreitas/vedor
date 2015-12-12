@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.activeandroid.ActiveAndroid;
 import com.parse.Parse;
 import com.parse.ParseException;
 import com.parse.ParseObject;
@@ -31,6 +32,7 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
         initialize();
+        ActiveAndroid.initialize(this);
 
         instanceViews();
     }

@@ -23,11 +23,13 @@ public class Politic extends ParseFields{
     private String candidateTurnDescription;
     private String candidateEmail;
     private String candidatePartyInitials;
+    private String objectId;
 
     public Politic() {}
 
     public Politic(ParseObject parseObject) {
 
+        setObjectId(parseObject.getObjectId());
         setCandidateName((String) parseObject.get(POLITIC_NAME));
         setCandidateNumber((String) parseObject.get(POLITIC_NUM));
         setElectionYear((String) parseObject.get(POLITIC_YEAR));
@@ -42,6 +44,14 @@ public class Politic extends ParseFields{
         setCandidateTurnDescription((String) parseObject.get(POLITIC_DESC_TURN));
         setCandidateEmail((String) parseObject.get(POLITIC_EMAIL));
         setCandidatePartyInitials((String) parseObject.get(POLITIC_PARTY_INIT));
+    }
+
+    public String getObjectId() {
+        return objectId;
+    }
+
+    public void setObjectId(String objectId) {
+        this.objectId = objectId;
     }
 
     public String getCandidatePartyInitials() {

@@ -6,6 +6,7 @@ package hackpuc.vedor.utils;
  */
 public class ParseFields {
 
+    public static final String POLITIC_ID         = "objectId";
     public static final String POLITIC_NAME       = "nome_candidato";
     public static final String POLITIC_NUM        = "numero_candidato";
     public static final String POLITIC_YEAR       = "ano_eleicao";

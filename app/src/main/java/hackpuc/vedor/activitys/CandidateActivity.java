@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import hackpuc.vedor.R;
 import hackpuc.vedor.adapter.CandidateAdapter;
@@ -15,6 +16,7 @@ public class CandidateActivity extends AppCompatActivity {
     private ListView listView;
     private String from;
     private CandidateAdapter candidateAdapter;
+    private TextView withoutCandidatesToShowTextView;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +38,7 @@ public class CandidateActivity extends AppCompatActivity {
             candidateAdapter = new CandidateAdapter(CandidateActivity.this, MainActivity.politicList);
 
         listView = (ListView) findViewById(R.id.listView);
+        withoutCandidatesToShowTextView = (TextView) findViewById(R.id.withoutCandidatesToShowTextView);
 
         listView.setAdapter(candidateAdapter);
 
@@ -44,6 +47,9 @@ public class CandidateActivity extends AppCompatActivity {
 
             }
         });
+
+        if(listView.getAdapter().getCount() <= 0)
+            withoutCandidatesToShowTextView.setVisibility(View.VISIBLE);
 
     }
 
