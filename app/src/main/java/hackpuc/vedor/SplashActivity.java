@@ -14,30 +14,30 @@ import com.parse.ParseQuery;
 
 import java.util.List;
 
+import hackpuc.vedor.objects.Politic;
+
 public class SplashActivity extends AppCompatActivity {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
-//        Parse.initialize(this, "YyVUOooeUmORbVk7iP8W6qtpif4NDpLeD4BVBDag", "td6YRtXiicaU6nTaRt4oOCcvJcNkFtcsrmUWWWeQ");
         Parse.initialize(this);
 
         // Waiting 2 seconds before start main project
-        Thread timer = new Thread(){
-            public void run(){
-                try{
-                    sleep(2000);
-                }catch(InterruptedException e){
-                    e.printStackTrace();
-                }finally{
-
-                    startActivity(new Intent(SplashActivity.this, MainActivity.class));
-
-                    finish();
-                }
-            }
-        };
-        timer.start();
+//        Thread timer = new Thread(){
+//            public void run(){
+//                try {
+//                    sleep(2000);
+//                } catch (InterruptedException e) {
+//                    e.printStackTrace();
+//                } finally {
+//
+//                    startActivity(new Intent(SplashActivity.this, MainActivity.class));
+//                    finish();
+//                }
+//            }
+//        };
+//        timer.start();
     }
 
     protected void onResume() {
@@ -51,7 +51,8 @@ public class SplashActivity extends AppCompatActivity {
                 if (objects != null) {
                     Log.e("Response", "Total of rows: " + objects.size());
                     for (ParseObject object : objects) {
-                        Log.e("Name", "Name: " + object.get("nome_candidato"));
+                        Politic politic = new Politic(object);
+                        Log.e("Name", "Name: " + politic.getCandidateName() + "| Party: " + politic.getCandidatePartyName());
                     }
                 } else
                     e.printStackTrace();
