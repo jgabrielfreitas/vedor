@@ -18,6 +18,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ExpandableListView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -26,6 +27,8 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+
+import hackpuc.vedor.objects.Politic;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -223,7 +226,11 @@ public class MainActivity extends AppCompatActivity
     public class StateFragment extends Fragment {
 
         private View view;
-        private ListView listView;
+        private ExpandableListView expandableListView;
+        private ExpandableListAdapter expandableListAdapter;
+
+        List<String> listDataHeader;
+        HashMap<String, List<Politic>> listDataChild;
 
        /* public MiddleFragment(boolean hasTransactions) {
             this.hasTransactions = hasTransactions;
@@ -241,14 +248,63 @@ public class MainActivity extends AppCompatActivity
          * GET ALL ORDERS AND SHOW
          * */
         private void instanceViewsFragmentAll(View view) {
-            listView = (ListView) view.findViewById(R.id.listView);
+            expandableListView = (ExpandableListView) view.findViewById(R.id.expandableListView);
 
-            List<String> officeList = new ArrayList<>();
-            officeList.add("Presidente");
-            officeList.add("Vice-Presidente");
-            OfficeAdapter officeAdapter = new OfficeAdapter(getActivity(), officeList);
+            listDataHeader = new ArrayList<>();
+            listDataChild = new HashMap<>();
 
-            listView.setAdapter(officeAdapter);
+            // Adding child data
+            listDataHeader.add("Presidente");
+            listDataHeader.add("Vice-Presidente");
+
+            // Adding child data
+            List<Politic> presidente = new ArrayList<>();
+            presidente.add(new Politic());
+            presidente.add(new Politic());
+            presidente.add(new Politic());
+            presidente.add(new Politic());
+
+            List<Politic> vice = new ArrayList<>();
+            vice.add(new Politic());
+            vice.add(new Politic());
+            vice.add(new Politic());
+            vice.add(new Politic());
+
+            listDataChild.put(listDataHeader.get(0), presidente);
+            listDataChild.put(listDataHeader.get(1), vice);
+
+            expandableListAdapter = new ExpandableListAdapter(getActivity(), listDataHeader, listDataChild);
+
+            // setting list adapter
+            expandableListView.setAdapter(expandableListAdapter);
+
+
+            // ExpandableListView on child click listener
+            expandableListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    Log.w("Lista", "" + position);
+                }
+            });
+
+            // Listview on child click listener
+            expandableListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
+
+                @Override
+                public boolean onChildClick(ExpandableListView parent, View v,
+                                            int groupPosition, int childPosition, long id) {
+                    // TODO Auto-generated method stub
+                    Toast.makeText(
+                            getApplicationContext(),
+                            listDataHeader.get(groupPosition)
+                                    + " : "
+                                    + listDataChild.get(
+                                    listDataHeader.get(groupPosition)).get(
+                                    childPosition), Toast.LENGTH_SHORT)
+                            .show();
+                    return false;
+                }
+            });
         }
     }
 }
