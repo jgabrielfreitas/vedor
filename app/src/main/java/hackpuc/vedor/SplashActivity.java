@@ -4,13 +4,14 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 
-import com.parse.FindCallback;
-import com.parse.GetCallback;
 import com.parse.Parse;
 import com.parse.ParseException;
 import com.parse.ParseObject;
-import com.parse.ParseQuery;
 
 import java.util.List;
 
@@ -19,74 +20,73 @@ import hackpuc.vedor.objects.Politic;
 import hackpuc.vedor.utils.ParseFields;
 import hackpuc.vedor.utils.ParseManager;
 
-public class SplashActivity extends AppCompatActivity {
+public class SplashActivity extends AppCompatActivity implements View.OnClickListener{
+
+    ProgressBar loadingProgressBar;
+    TextView    loadingTextView;
+    Button      tryAgainButton;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
         initialize();
 
-        // Waiting 2 seconds before start main project
-        Thread timer = new Thread(){
-            public void run(){
-                try {
-                    sleep(2000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                } finally {
+        instanceViews();
+    }
 
-                    startActivity(new Intent(SplashActivity.this, MainActivity.class));
-                    finish();
-                }
-            }
-        };
-        timer.start();
+    private void instanceViews() {
+
+        loadingProgressBar = (ProgressBar) findViewById(R.id.loadingProgressBar);
+        loadingTextView    = (TextView)    findViewById(R.id.loadingTextView);
+        tryAgainButton     = (Button)      findViewById(R.id.tryAgainButton);
+
+        tryAgainButton.setOnClickListener(this);
     }
 
     protected void onResume() {
         super.onResume();
-        // request Parse datas
-
-        ParseManager.parseCreator("politics").addWhereStartWith(ParseFields.POLITIC_NAME, "JAIR")
-                                             .addWhereEqualsTo(ParseFields.POLITIC_NUM_PART, "11")
-                                             .addWhereEqualsTo(ParseFields.POLITIC_UF, "RJ")
-                                             .setParseCallback(new ParseCallback() {
-                                                 public void onSuccess(List<ParseObject> parseObjects) {
-                                                     Log.e("Response", "Total of rows: " + parseObjects.size());
-                                                     for (ParseObject object : parseObjects) {
-                                                         Politic politic = new Politic(object);
-                                                         Log.e("Name", "Name: " + politic.getCandidateName());
-                                                     }
-                                                 }
-                                                 public void onError(ParseException e) {
-                                                     e.printStackTrace();
-                                                 }
-                                             })
-                                             .doRequest();
-
-        // facebook
-//        ParseQuery<ParseObject> query = ParseQuery.getQuery("politics");
-//        query.setLimit(1000);
-//        query.findInBackground(new FindCallback<ParseObject>() {
-//            public void done(List<ParseObject> objects, ParseException e) {
-//
-//                if (objects != null) {
-//                    Log.e("Response", "Total of rows: " + objects.size());
-//                    for (ParseObject object : objects) {
-//                        Politic politic = new Politic(object);
-//                        Log.e("Name", "Name: " + politic.getCandidateName() + "| Party: " + politic.getCandidatePartyName());
-//                    }
-//                } else
-//                    e.printStackTrace();
-//            }
-//        });
-
+        doRequest();
     }
 
     private void initialize() {
-        try{
+        try {
             Parse.initialize(this);
-        }catch (Exception e) {}
+        } catch (Exception e) {}
     }
 
+    private void doRequest(){
+
+        // request Parse datas
+        ParseManager.createCustomParserRequest(this, ParseManager.POLITICS)
+                    .addWhereStartWith(ParseFields.POLITIC_NAME, "AÉCIO")
+                    .addWhereEqualsTo(ParseFields.POLITIC_DESC_TURN, "NÃO ELEITO")
+                    .setParseCallback(new ParseCallback() {
+                        public void onSuccess(List<ParseObject> parseObjects) {
+                            Log.e("Response", "Total of rows: " + parseObjects.size());
+                            for (ParseObject object : parseObjects) {
+                                Politic politic = new Politic(object);
+                                Log.e("Name", "Name: " + politic.getCandidateName());
+                            }
+                            startActivity(new Intent(SplashActivity.this, MainActivity.class));
+                            finish();
+                        }
+
+                        public void onError(ParseException e) {
+                            e.printStackTrace();
+                            tryAgainButton.setVisibility(View.VISIBLE);
+                            loadingProgressBar.setVisibility(View.GONE);
+                            loadingTextView.setText("Ocorreu um erro, tente novamente.");
+                        }
+                    })
+                    .doRequest();
+    }
+
+    public void onClick(View v) {
+
+        tryAgainButton.setVisibility(View.GONE);
+        loadingProgressBar.setVisibility(View.VISIBLE);
+        loadingTextView.setText("Carregando...");
+
+        doRequest();
+    }
 }

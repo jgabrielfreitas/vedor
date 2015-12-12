@@ -7,6 +7,8 @@ import android.content.Context;
  */
 public class ParseManager {
 
+    public static final String POLITICS = "politics";
+
     public static ParseRequest createParserRequest(String classToRequest) {
         return new ParseRequest(classToRequest);
     }
