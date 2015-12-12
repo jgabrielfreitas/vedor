@@ -42,10 +42,18 @@
         <activity
             android:name=".activitys.CandidateActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
-            android:label="@string/candidate"/>
+            android:label="@string/candidate" />
 
-        <meta-data android:name="FAVORITES_DB_NAME" android:value="Favorites.db" />
-        <meta-data android:name="FAVORITES_DB_VERSION" android:value="1" />
+        <meta-data
+            android:name="FAVORITES_DB_NAME"
+            android:value="Favorites.db" />
+        <meta-data
+            android:name="FAVORITES_DB_VERSION"
+            android:value="1" />
+
+        <activity android:name=".activitys.DetailsActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/details" />
     </application>
 
 </manifest>
