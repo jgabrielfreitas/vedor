@@ -13,9 +13,9 @@
         android:id="@+id/nameCandidateTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="Jaíson Bourne"
         android:textSize="22sp"
-        android:textStyle="bold"
-        android:text="Jaíson Bourne" />
+        android:textStyle="bold" />
 
     <ImageView
         android:id="@+id/partyImageView"
@@ -29,36 +29,36 @@
         android:id="@+id/partyTextView"
         android:layout_width="wrap_content"
         android:layout_height="50dp"
-        android:text="16 - PSTU"
-        android:gravity="center_vertical"
-        android:textSize="20sp"
-        android:layout_marginLeft="@dimen/space_default"
         android:layout_alignTop="@+id/partyImageView"
+        android:layout_marginLeft="@dimen/space_default"
+        android:layout_toEndOf="@+id/partyImageView"
         android:layout_toRightOf="@+id/partyImageView"
-        android:layout_toEndOf="@+id/partyImageView" />
+        android:gravity="center_vertical"
+        android:text="16 - PSTU"
+        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/labelDocumentTextView"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_below="@+id/partyImageView"
+        android:layout_marginTop="@dimen/half_space_default"
         android:gravity="center_vertical"
-        android:textSize="23sp"
         android:text="CPF:"
-        android:textStyle="bold"
-        android:layout_marginTop="@dimen/half_space_default" />
+        android:textSize="23sp"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/documentTextView"
         android:layout_width="wrap_content"
         android:layout_height="50dp"
-        android:text="123.456.789-10"
-        android:gravity="center_vertical"
-        android:textSize="20sp"
-        android:layout_marginLeft="@dimen/space_default"
         android:layout_alignTop="@+id/labelDocumentTextView"
+        android:layout_marginLeft="@dimen/space_default"
+        android:layout_toEndOf="@+id/labelDocumentTextView"
         android:layout_toRightOf="@+id/labelDocumentTextView"
-        android:layout_toEndOf="@+id/labelDocumentTextView" />
+        android:gravity="center_vertical"
+        android:text="123.456.789-10"
+        android:textSize="20sp" />
 
     <android.support.design.widget.TextInputLayout
         android:id="@+id/emailTextInputLayout"
@@ -71,10 +71,12 @@
             android:id="@+id/emailAutoCompleteTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="E-mail"
-            android:inputType="textEmailAddress"
-            android:maxLines="1"
-            android:singleLine="true"/>
+            android:gravity="top|left"
+            android:hint="Digite a mensagem que irá para o candidato"
+            android:inputType="textMultiLine|textEmailAddress"
+            android:lines="3"
+            android:maxLines="4"
+            android:scrollbars="vertical" />
 
     </android.support.design.widget.TextInputLayout>
 
@@ -82,13 +84,13 @@
         android:id="@+id/sendEmailButton"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="ENVIAR E-MAIL"
-        android:layout_below="@+id/emailTextInputLayout"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
+        android:layout_below="@+id/emailTextInputLayout"
+        android:layout_marginTop="@dimen/space_default"
         android:background="@drawable/button_only_margin"
-        android:textColor="@drawable/text_selector"
-        android:layout_marginTop="@dimen/space_default" />
+        android:text="ENVIAR E-MAIL"
+        android:textColor="@drawable/text_selector" />
 
 
 </RelativeLayout>

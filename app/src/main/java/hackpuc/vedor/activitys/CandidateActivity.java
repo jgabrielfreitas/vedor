@@ -1,5 +1,6 @@
 package hackpuc.vedor.activitys;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -10,6 +11,7 @@ import android.widget.TextView;
 
 import hackpuc.vedor.R;
 import hackpuc.vedor.adapter.CandidateAdapter;
+import hackpuc.vedor.objects.Politic;
 
 public class CandidateActivity extends AppCompatActivity {
 
@@ -44,6 +46,15 @@ public class CandidateActivity extends AppCompatActivity {
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                Politic politic = (Politic) listView.getAdapter().getItem(position);
+                Intent intent = new Intent(CandidateActivity.this, DetailsActivity.class);
+                intent.putExtra("name", politic.getCandidatePartyName());
+                intent.putExtra("party", politic.getCandidatePartyInitials());
+                intent.putExtra("number", politic.getCandidatePartyNumber());
+                intent.putExtra("cpf", politic.getCandidateDocumentNumber());
+                intent.putExtra("email", politic.getCandidateEmail());
+                startActivity(intent);
 
             }
         });

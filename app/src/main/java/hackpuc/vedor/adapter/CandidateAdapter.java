@@ -20,6 +20,7 @@ import hackpuc.vedor.R;
 import hackpuc.vedor.activitys.SplashActivity;
 import hackpuc.vedor.database.Favorite;
 import hackpuc.vedor.objects.Politic;
+import hackpuc.vedor.utils.Utils;
 
 /**
  * Created by Cristian on 12/12/2015.
@@ -90,7 +91,7 @@ public class CandidateAdapter extends BaseAdapter {
 
         TextView statusTextView   = (TextView) view.findViewById(R.id.statusTextView);
 
-        partyImageView.setImageResource(inputBrandParty(politic.getCandidatePartyInitials()));
+        partyImageView.setImageResource(Utils.inputBrandParty(politic.getCandidatePartyInitials()));
 
         if (politic.getCandidateName().length() <= 28)
             nameTextView.setText(politic.getCandidateName());
@@ -111,76 +112,5 @@ public class CandidateAdapter extends BaseAdapter {
             statusTextView.setText(politic.getCandidateTurnDescription());
 
         return view;
-    }
-
-    private int inputBrandParty(String partyInitials){
-        switch (partyInitials.toUpperCase()){
-            case "DEM":
-                return R.drawable.ic_dem;
-            case "PC DO B":
-                return R.drawable.ic_pcdob;
-            case "PCB":
-                return R.drawable.ic_pcb;
-            case "PCO":
-                return R.drawable.ic_pco;
-            case "PDT":
-                return R.drawable.ic_pdt;
-            case "PEN":
-                return R.drawable.ic_pen;
-            case "PHS":
-                return R.drawable.ic_phs;
-            case "PMBD":
-                return R.drawable.ic_pmdb;
-            case "PMN":
-                return R.drawable.ic_pmn;
-            case "PP":
-                return R.drawable.ic_pp;
-            case "PPL":
-                return R.drawable.ic_ppl;
-            case "PPS":
-                return R.drawable.ic_pps;
-            case "PR":
-                return R.drawable.ic_pr;
-            case "PRB":
-                return R.drawable.ic_prb;
-            case "PROS":
-                return R.drawable.ic_pros;
-            case "PRP":
-                return R.drawable.ic_prp;
-            case "PRTB":
-                return R.drawable.ic_prtb;
-            case "PSB":
-                return R.drawable.ic_psb;
-            case "PSC":
-                return R.drawable.ic_psc;
-            case "PSD":
-                return R.drawable.ic_psd;
-            case "PSDB":
-                return R.drawable.ic_psdb;
-            case "PSDC":
-                return R.drawable.ic_psdc;
-            case "PSL":
-                return R.drawable.ic_psl;
-            case "PSOL":
-                return R.drawable.ic_psol;
-            case "PSTU":
-                return R.drawable.ic_pstu;
-            case "PT":
-                return R.drawable.ic_pt;
-            case "PT DO B":
-                return R.drawable.ic_ptdob;
-            case "PTB":
-                return R.drawable.ic_ptb;
-            case "PTC":
-                return R.drawable.ic_ptc;
-            case "PTN":
-                return R.drawable.ic_ptn;
-            case "PV":
-                return R.drawable.ic_pv;
-            case "SD":
-                return R.drawable.ic_sd;
-            default:
-                return R.drawable.ic_pstu;
-        }
     }
 }
