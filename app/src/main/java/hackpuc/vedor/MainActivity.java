@@ -30,9 +30,6 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    List<String> listDataHeader;
-    HashMap<String, List<String>> listDataChild;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
