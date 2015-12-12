@@ -5,7 +5,9 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.Fragment;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -15,12 +17,22 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.ViewGroup;
+import android.widget.ExpandableListView;
+import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    List<String> listDataHeader;
+    HashMap<String, List<String>> listDataChild;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +58,8 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        getSupportFragmentManager().beginTransaction().replace(R.id.container, new StateFragment()).commit();
     }
 
     @Override
@@ -91,9 +105,8 @@ public class MainActivity extends AppCompatActivity
         switch (item.getItemId()){
 
             case R.id.nav_br:
-
-                Log.w("Nav_Br", "Passou aqui");
-
+                getSupportActionBar().setTitle("Brasil");
+                getSupportFragmentManager().beginTransaction().replace(R.id.container, new StateFragment()).commit();
                 break;
           /*  case R.id.ac:
                 break;
@@ -150,6 +163,7 @@ public class MainActivity extends AppCompatActivity
             case R.id.to:
                 break;*/
             case R.id.nav_n:
+                getSupportActionBar().setTitle("Norte");
                 stateItemList.add(new StateItem(R.drawable.ic_acre, "Acre", "AC"));
                 stateItemList.add(new StateItem(R.drawable.ic_amapa, "Amapá", "AP"));
                 stateItemList.add(new StateItem(R.drawable.ic_amazonas, "Amazonas", "AM"));
@@ -159,6 +173,7 @@ public class MainActivity extends AppCompatActivity
                 stateItemList.add(new StateItem(R.drawable.ic_tocantins, "Tocantins", "TO"));
                 break;
             case R.id.nav_ne:
+                getSupportActionBar().setTitle("Nordeste");
                 stateItemList.add(new StateItem(R.drawable.ic_alagoas, "Alagoas", "AL"));
                 stateItemList.add(new StateItem(R.drawable.ic_bahia, "Bahia", "BA"));
                 stateItemList.add(new StateItem(R.drawable.ic_ceara, "Ceará", "CE"));
@@ -170,18 +185,21 @@ public class MainActivity extends AppCompatActivity
                 stateItemList.add(new StateItem(R.drawable.ic_sergipe, "Sergipe", "SE"));
                 break;
             case R.id.nav_co:
+                getSupportActionBar().setTitle("Centro-Oeste");
                 stateItemList.add(new StateItem(R.drawable.ic_distrito_federal, "Distrito Federal", "DF"));
                 stateItemList.add(new StateItem(R.drawable.ic_goias, "Goiás", "GO"));
                 stateItemList.add(new StateItem(R.drawable.ic_mato_grosso, "Mato Grosso", "MT"));
                 stateItemList.add(new StateItem(R.drawable.ic_mato_grosso_do_sul, "Mato Grosso do Sul", "MS"));
                 break;
             case R.id.nav_se:
+                getSupportActionBar().setTitle("Sudeste");
                 stateItemList.add(new StateItem(R.drawable.ic_espirito_santo, "Espírito Santo", "ES"));
                 stateItemList.add(new StateItem(R.drawable.ic_minas_gerais, "Minas Gerais", "MG"));
                 stateItemList.add(new StateItem(R.drawable.ic_rio_de_janeiro, "Rio de Janeiro", "RJ"));
                 stateItemList.add(new StateItem(R.drawable.ic_sao_paulo, "São Paulo", "SP"));
                 break;
             case R.id.nav_s:
+                getSupportActionBar().setTitle("Sul");
                 stateItemList.add(new StateItem(R.drawable.ic_parana, "Paraná", "PR"));
                 stateItemList.add(new StateItem(R.drawable.ic_rio_grande_do_sul, "Rio Grande do Sul", "RS"));
                 stateItemList.add(new StateItem(R.drawable.ic_santa_catarina, "Santa Catarina", "SC"));
@@ -202,5 +220,38 @@ public class MainActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    // fragments to inflate
+    public class StateFragment extends Fragment {
+
+        private View view;
+        private ListView listView;
+
+       /* public MiddleFragment(boolean hasTransactions) {
+            this.hasTransactions = hasTransactions;
+        }*/
+
+        public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
+            view = inflater.inflate(R.layout.fragment_state, container, false);
+            instanceViewsFragmentAll(view);
+
+            return view;
+        }
+
+        /**
+         * GET ALL ORDERS AND SHOW
+         * */
+        private void instanceViewsFragmentAll(View view) {
+            listView = (ListView) view.findViewById(R.id.listView);
+
+            List<String> officeList = new ArrayList<>();
+            officeList.add("Presidente");
+            officeList.add("Vice-Presidente");
+            OfficeAdapter officeAdapter = new OfficeAdapter(getActivity(), officeList);
+
+            listView.setAdapter(officeAdapter);
+        }
     }
 }

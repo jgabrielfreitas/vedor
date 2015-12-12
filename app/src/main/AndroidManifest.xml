@@ -12,11 +12,10 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
         <activity
             android:name=".SplashActivity"
-            android:label="@string/app_name"
             android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/app_name"
             android:theme="@style/AppTheme.CustomNoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -26,8 +25,8 @@
         </activity>
         <activity
             android:name=".MainActivity"
-            android:label="@string/app_name"
             android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar" />
 
         <meta-data
@@ -36,6 +35,8 @@
         <meta-data
             android:name="com.parse.CLIENT_KEY"
             android:value="td6YRtXiicaU6nTaRt4oOCcvJcNkFtcsrmUWWWeQ" />
+
+        <activity android:name=".StateActivity"></activity>
     </application>
 
 </manifest>
