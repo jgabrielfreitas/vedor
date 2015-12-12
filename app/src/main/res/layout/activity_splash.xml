@@ -7,7 +7,7 @@
 
     <ImageView
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="120dp"
         android:id="@+id/imageView2"
         android:src="@drawable/eye"
         android:layout_above="@+id/textView"
@@ -30,6 +30,7 @@
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="#developersdevelopersdevelopers"
         android:id="@+id/textView2"
+        android:textStyle="bold"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true" />
 
