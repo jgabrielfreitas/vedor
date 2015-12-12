@@ -1,11 +1,11 @@
 package hackpuc.vedor.utils;
 
+
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import hackpuc.vedor.interfaces.ParseCallback;
@@ -15,9 +15,8 @@ import hackpuc.vedor.interfaces.ParseCallback;
  */
 public class ParseRequest {
 
-    private List<ParseObject> parseObjects = new ArrayList<>();
-    private ParseCallback parseCallback;
-    private ParseQuery<ParseObject> query;
+    protected ParseCallback parseCallback;
+    protected ParseQuery<ParseObject> query;
 
     public ParseRequest(String classToRequest) {
         query = ParseQuery.getQuery(classToRequest);
