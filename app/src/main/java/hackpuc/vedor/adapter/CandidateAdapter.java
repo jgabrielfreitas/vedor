@@ -54,9 +54,18 @@ public class CandidateAdapter extends BaseAdapter {
         TextView statusTextView   = (TextView) view.findViewById(R.id.statusTextView);
 
         partyImageView.setImageResource(inputBrandParty(politic.getCandidatePartyInitials()));
-		nameTextView.setText(politic.getCandidateName());
 
-		partyTextView.setText(politic.getCandidatePartyNumber() + " - " + politic.getCandidatePartyName());
+        if (politic.getCandidateName().length() <= 28)
+            nameTextView.setText(politic.getCandidateName());
+        else
+            nameTextView.setText(politic.getCandidateName().substring(0, 28) + ".");
+
+        String party = politic.getCandidatePartyNumber() + " - " + politic.getCandidatePartyName();
+        if (party.length() <= 28)
+		    partyTextView.setText(party);
+        else
+            partyTextView.setText(party.substring(0, 28) + ".");
+
 //		favoriteCheckBox.setChecked();
 
         if (politic.getCandidateTurnDescription().equals("NULL") == true)
