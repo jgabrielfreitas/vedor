@@ -21,6 +21,7 @@ public class ParseRequest {
     public ParseRequest(String classToRequest) {
         query = ParseQuery.getQuery(classToRequest);
         query.setLimit(1000);
+        addWhereEqualsTo(ParseFields.POLITIC_NUM_TURNO, "1");
     }
 
     public ParseRequest addWhereEqualsTo(String key, String value){
