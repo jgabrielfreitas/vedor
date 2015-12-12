@@ -1,22 +1,33 @@
 package hackpuc.vedor.activitys;
 
+import android.app.SearchManager;
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.GravityCompat;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
 
 import com.parse.ParseException;
@@ -69,24 +80,74 @@ public class MainActivity extends AppCompatActivity
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.main, menu);
+        SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+        SearchView searchView = null;
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.HONEYCOMB) {
+            searchView = (SearchView) menu.findItem(R.id.search).getActionView();
+        }
+
+        final SearchView finalSearchView = searchView;
+
+        final ImageView mCloseButton = (ImageView) searchView.findViewById(R.id.search_close_btn);
+
+        SearchView.OnQueryTextListener searchListener = new SearchView.OnQueryTextListener(){
+            @Override
+            public boolean onQueryTextChange(String arg0) {
+                return false;
+            }
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                Log.w("TAG", query);
+                mCloseButton.performClick();
+                finalSearchView.clearFocus();
+
+                // create request here and sent
+                ParseManager.createCustomParserRequest(MainActivity.this).setWorkInBackground(false)
+                        .setDialogMessage("Carregando...")
+                        .addWhereStartWith(ParseFields.POLITIC_NAME, query.toUpperCase())
+                        .setParseCallback(new ParseCallback() {
+                            public void onSuccess(List<ParseObject> parseObjects) {
+
+                                politicList = new ArrayList<>();
+
+                                for (ParseObject parseObject : parseObjects) {
+                                    Log.e("Response", "Name:" + new Politic(parseObject));
+                                    politicList.add(new Politic(parseObject));
+                                }
+//                                  Log.e("Response", "Total of rows: " + parseObjects.size());
+                                Intent intent = new Intent(MainActivity.this, CandidateActivity.class);
+                                intent.putExtra("from", "main");
+                                startActivity(intent);
+                            }
+
+                            public void onError(ParseException e) {
+
+                            }
+                        }).doRequest();
+
+                return true;
+            }
+        };
+        searchView.setOnQueryTextListener(searchListener);
+
         return true;
     }
 
-    public boolean onOptionsItemSelected(MenuItem item) {
+   /* public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.search) {
             return true;
         }
 
         return super.onOptionsItemSelected(item);
-    }
+    }*/
 
     @SuppressWarnings("StatementWithEmptyBody")
     public boolean onNavigationItemSelected(MenuItem item) {
@@ -101,60 +162,6 @@ public class MainActivity extends AppCompatActivity
                 getSupportActionBar().setTitle("Brasil");
                 getSupportFragmentManager().beginTransaction().replace(R.id.container, new StateFragment()).commit();
                 break;
-          /*  case R.id.ac:
-                break;
-            case R.id.al:
-                break;
-            case R.id.am:
-                break;
-            case R.id.ap:
-                break;
-            case R.id.ba:
-                break;
-            case R.id.ce:
-                break;
-            case R.id.df:
-                break;
-            case R.id.es:
-                break;
-            case R.id.go:
-                break;
-            case R.id.ma:
-                break;
-            case R.id.mg:
-                break;
-            case R.id.ms:
-                break;
-            case R.id.mt:
-                break;
-            case R.id.pa:
-                break;
-            case R.id.pb:
-                break;
-            case R.id.pe:
-                break;
-            case R.id.pi:
-                break;
-            case R.id.pr:
-                break;
-            case R.id.rj:
-                break;
-            case R.id.rn:
-                break;
-            case R.id.ro:
-                break;
-            case R.id.rr:
-                break;
-            case R.id.rs:
-                break;
-            case R.id.sc:
-                break;
-            case R.id.se:
-                break;
-            case R.id.sp:
-                break;
-            case R.id.to:
-                break;*/
             case R.id.nav_n:
                 getSupportActionBar().setTitle("Norte");
                 stateItemList.add(new StateItem(R.drawable.ic_acre, "Acre", "AC"));
@@ -221,16 +228,6 @@ public class MainActivity extends AppCompatActivity
         private View view;
         private ListView listView;
 
-//        private ExpandableListView expandableListView;
-//        private ExpandableListAdapter expandableListAdapter;
-//
-//        List<String> listDataHeader;
-//        HashMap<String, List<Politic>> listDataChild;
-
-       /* public MiddleFragment(boolean hasTransactions) {
-            this.hasTransactions = hasTransactions;
-        }*/
-
         public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
             view = inflater.inflate(R.layout.fragment_state, container, false);
@@ -243,63 +240,6 @@ public class MainActivity extends AppCompatActivity
          * GET ALL ORDERS AND SHOW
          * */
         private void instanceViewsFragmentAll(View view) {
-//            expandableListView = (ExpandableListView) view.findViewById(R.id.expandableListView);
-//
-//            listDataHeader = new ArrayList<>();
-//            listDataChild = new HashMap<>();
-//
-//            // Adding child data
-//            listDataHeader.add("Presidente");
-//            listDataHeader.add("Vice-Presidente");
-//
-//            // Adding child data
-//            List<Politic> presidente = new ArrayList<>();
-//            presidente.add(new Politic());
-//            presidente.add(new Politic());
-//            presidente.add(new Politic());
-//            presidente.add(new Politic());
-//
-//            List<Politic> vice = new ArrayList<>();
-//            vice.add(new Politic());
-//            vice.add(new Politic());
-//            vice.add(new Politic());
-//            vice.add(new Politic());
-//
-//            listDataChild.put(listDataHeader.get(0), presidente);
-//            listDataChild.put(listDataHeader.get(1), vice);
-//
-//            expandableListAdapter = new ExpandableListAdapter(getActivity(), listDataHeader, listDataChild);
-//
-//            // setting list adapter
-//            expandableListView.setAdapter(expandableListAdapter);
-//
-//
-//            // ExpandableListView on child click listener
-//            expandableListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//                @Override
-//                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                    Log.w("Lista", "" + position);
-//                }
-//            });
-//
-//            // Listview on child click listener
-//            expandableListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
-//
-//                @Override
-//                public boolean onChildClick(ExpandableListView parent, View v,
-//                                            int groupPosition, int childPosition, long id) {
-//                    // TODO Auto-generated method stub
-//                    Toast.makeText(
-//                            getApplicationContext(),
-//                            listDataHeader.get(groupPosition)
-//                                    + " : "
-//                                    + listDataChild.get(
-//                                    listDataHeader.get(groupPosition)).get(
-//                                    childPosition), Toast.LENGTH_SHORT)
-//                            .show();
-//                    return false;
-//                }
-//            });
 
             List<String> offStringList = new ArrayList<>();
             offStringList.add("Presidente");
