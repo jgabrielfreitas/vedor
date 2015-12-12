@@ -103,6 +103,14 @@
             android:title="Sul" />
     </group>
 
+    <item android:title="Favoritos">
+        <menu>
+            <item
+                android:id="@+id/nav_check"
+                android:title="Marque o político" />
+        </menu>
+    </item>
+
     <group android:id="@+id/menu_bottom"
         android:checkableBehavior="none">
         <item
