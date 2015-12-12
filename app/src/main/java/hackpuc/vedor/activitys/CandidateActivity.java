@@ -44,4 +44,15 @@ public class CandidateActivity extends AppCompatActivity {
         });
 
     }
+
+    // Add arrow in action bar to back on activity
+    public boolean onOptionsItemSelected(android.view.MenuItem item) {
+        switch (item.getItemId()) {
+            // Respond to the action bar's Up/Home button
+            case android.R.id.home:
+                finish();
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 }
