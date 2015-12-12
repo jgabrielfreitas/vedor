@@ -32,10 +32,10 @@
 
         <meta-data
             android:name="com.parse.APPLICATION_ID"
-            android:value="@string/parse_app_id" />
+            android:value="YyVUOooeUmORbVk7iP8W6qtpif4NDpLeD4BVBDag" />
         <meta-data
             android:name="com.parse.CLIENT_KEY"
-            android:value="@string/parse_client_key" />
+            android:value="td6YRtXiicaU6nTaRt4oOCcvJcNkFtcsrmUWWWeQ" />
     </application>
 
 </manifest>
