@@ -60,7 +60,7 @@ public class CandidateAdapter extends BaseAdapter {
         else
             nameTextView.setText(politic.getCandidateName().substring(0, 28) + ".");
 
-        String party = politic.getCandidatePartyNumber() + " - " + politic.getCandidatePartyName();
+        String party = politic.getCandidatePartyNumber() + " - " + politic.getCandidatePartyInitials();
         if (party.length() <= 28)
 		    partyTextView.setText(party);
         else
