@@ -21,6 +21,7 @@ import hackpuc.vedor.interfaces.ParseCallback;
 import hackpuc.vedor.objects.Politic;
 import hackpuc.vedor.utils.ParseFields;
 import hackpuc.vedor.utils.ParseManager;
+import hackpuc.vedor.utils.Utils;
 
 public class SplashActivity extends AppCompatActivity implements View.OnClickListener{
 
