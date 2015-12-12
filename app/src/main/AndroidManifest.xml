@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".SplashActivity"
+            android:name=".activitys.SplashActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.CustomNoActionBar">
@@ -24,7 +24,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name=".activitys.MainActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar" />
@@ -36,7 +36,7 @@
             android:name="com.parse.CLIENT_KEY"
             android:value="td6YRtXiicaU6nTaRt4oOCcvJcNkFtcsrmUWWWeQ" />
 
-        <activity android:name=".StateActivity"></activity>
+        <activity android:name=".activitys.StateActivity"></activity>
     </application>
 
 </manifest>

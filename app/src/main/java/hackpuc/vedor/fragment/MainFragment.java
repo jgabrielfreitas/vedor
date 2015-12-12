@@ -1,4 +1,4 @@
-package hackpuc.vedor;
+package hackpuc.vedor.fragment;
 
 
 import android.content.Intent;
@@ -8,11 +8,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import java.util.List;
+
+import hackpuc.vedor.R;
+import hackpuc.vedor.adapter.StateAdapter;
+import hackpuc.vedor.item.StateItem;
+import hackpuc.vedor.activitys.StateActivity;
 
 
 /**

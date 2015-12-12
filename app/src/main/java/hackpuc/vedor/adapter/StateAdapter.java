@@ -1,4 +1,4 @@
-package hackpuc.vedor;
+package hackpuc.vedor.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -9,6 +9,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.List;
+
+import hackpuc.vedor.R;
+import hackpuc.vedor.item.StateItem;
 
 /**
  * Created by Cristian on 11/12/2015.

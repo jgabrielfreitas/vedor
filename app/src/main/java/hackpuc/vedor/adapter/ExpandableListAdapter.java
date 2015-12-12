@@ -1,10 +1,12 @@
-package hackpuc.vedor;
+package hackpuc.vedor.adapter;
 
 import java.util.HashMap;
 import java.util.List;
 
 import android.content.Context;
 import android.graphics.Typeface;
+import android.support.v7.widget.CardView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +15,7 @@ import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import hackpuc.vedor.R;
 import hackpuc.vedor.objects.Politic;
 
 public class ExpandableListAdapter extends BaseExpandableListAdapter {
@@ -50,15 +53,15 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
 			convertView = infalInflater.inflate(R.layout.expandable_item, null);
 		}
 
-//		ImageView nameImageView   = (ImageView) convertView.findViewById(R.id.nameImageView);
-//		TextView nameTextView     = (TextView) convertView.findViewById(R.id.nameTextView);
-//
-////		ImageView partyImageView  = (ImageView) convertView.findViewById(R.id.partyImageView);
-//		TextView partyTextView    = (TextView) convertView.findViewById(R.id.partyTextView);
-//		CheckBox favoriteCheckBox = (CheckBox) convertView.findViewById(R.id.favoriteCheckBox);
-//
-////		ImageView statusImageView = (ImageView) convertView.findViewById(R.id.statusImageView);
-//		TextView statusTextView   = (TextView) convertView.findViewById(R.id.statusTextView);
+		CardView cardView =  (CardView) convertView.findViewById(R.id.cardView);
+
+		ImageView partyImageView   = (ImageView) convertView.findViewById(R.id.partyImageView);
+		TextView nameTextView     = (TextView) convertView.findViewById(R.id.nameTextView);
+
+		TextView partyTextView    = (TextView) convertView.findViewById(R.id.partyTextView);
+		CheckBox favoriteCheckBox = (CheckBox) convertView.findViewById(R.id.favoriteCheckBox);
+
+		TextView statusTextView   = (TextView) convertView.findViewById(R.id.statusTextView);
 
 
 		/*nameImageView.setImageResource(politic.getCandidateUf());
@@ -71,6 +74,13 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
 
 		statusImageView.setImageResource(politic.getCandidateTurnDescription());
 		partyTextView.setText(politic.getCandidateTurnDescription());*/
+
+		cardView.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Log.w("Dentro adapter", ""+childPosition);
+			}
+		});
 
 		return convertView;
 	}

@@ -1,4 +1,4 @@
-package hackpuc.vedor;
+package hackpuc.vedor.activitys;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -15,6 +15,7 @@ import com.parse.ParseObject;
 
 import java.util.List;
 
+import hackpuc.vedor.R;
 import hackpuc.vedor.interfaces.ParseCallback;
 import hackpuc.vedor.objects.Politic;
 import hackpuc.vedor.utils.ParseFields;

@@ -9,18 +9,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
-        android:layout_marginLeft="60dp"
+        android:layout_marginLeft="20dp"
         android:layout_marginTop="20dp"
         android:text="4242"
         android:textSize="16sp" />
-
-    <View
-        android:id="@+id/dividerView"
-        android:layout_width="wrap_content"
-        android:layout_height="0.5dp"
-        android:layout_alignLeft="@+id/officeTextView"
-        android:layout_alignStart="@+id/officeTextView"
-        android:layout_below="@+id/officeTextView"
-        android:background="@android:color/darker_gray" />
 
 </RelativeLayout>

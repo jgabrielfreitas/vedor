@@ -1,4 +1,4 @@
-package hackpuc.vedor;
+package hackpuc.vedor.item;
 
 /**
  * Created by Cristian on 11/12/2015.
