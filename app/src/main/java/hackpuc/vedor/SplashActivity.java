@@ -14,7 +14,10 @@ import com.parse.ParseQuery;
 
 import java.util.List;
 
+import hackpuc.vedor.interfaces.ParseCallback;
 import hackpuc.vedor.objects.Politic;
+import hackpuc.vedor.utils.ParseFields;
+import hackpuc.vedor.utils.ParseManager;
 
 public class SplashActivity extends AppCompatActivity {
 
@@ -43,21 +46,40 @@ public class SplashActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         // request Parse datas
-        ParseQuery<ParseObject> query = ParseQuery.getQuery("politics");
-        query.setLimit(1000);
-        query.findInBackground(new FindCallback<ParseObject>() {
-            public void done(List<ParseObject> objects, ParseException e) {
 
-                if (objects != null) {
-                    Log.e("Response", "Total of rows: " + objects.size());
-                    for (ParseObject object : objects) {
-                        Politic politic = new Politic(object);
-                        Log.e("Name", "Name: " + politic.getCandidateName() + "| Party: " + politic.getCandidatePartyName());
-                    }
-                } else
-                    e.printStackTrace();
-            }
-        });
+        ParseManager.parseCreator("politics").addWhereStartWith(ParseFields.POLITIC_NAME, "JAIR")
+                                             .addWhereEqualsTo(ParseFields.POLITIC_NUM_PART, "11")
+                                             .addWhereEqualsTo(ParseFields.POLITIC_UF, "RJ")
+                                             .setParseCallback(new ParseCallback() {
+                                                 public void onSuccess(List<ParseObject> parseObjects) {
+                                                     Log.e("Response", "Total of rows: " + parseObjects.size());
+                                                     for (ParseObject object : parseObjects) {
+                                                         Politic politic = new Politic(object);
+                                                         Log.e("Name", "Name: " + politic.getCandidateName());
+                                                     }
+                                                 }
+                                                 public void onError(ParseException e) {
+                                                     e.printStackTrace();
+                                                 }
+                                             })
+                                             .doRequest();
+
+        // facebook
+//        ParseQuery<ParseObject> query = ParseQuery.getQuery("politics");
+//        query.setLimit(1000);
+//        query.findInBackground(new FindCallback<ParseObject>() {
+//            public void done(List<ParseObject> objects, ParseException e) {
+//
+//                if (objects != null) {
+//                    Log.e("Response", "Total of rows: " + objects.size());
+//                    for (ParseObject object : objects) {
+//                        Politic politic = new Politic(object);
+//                        Log.e("Name", "Name: " + politic.getCandidateName() + "| Party: " + politic.getCandidatePartyName());
+//                    }
+//                } else
+//                    e.printStackTrace();
+//            }
+//        });
 
     }
 
