@@ -15,58 +15,60 @@
 
         <ImageView
             android:id="@+id/partyImageView"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignBottom="@+id/statusTextView"
+            android:layout_alignTop="@+id/nameTextView"
             android:layout_marginLeft="@dimen/half_space_default"
+            android:layout_marginRight="@dimen/half_space_default"
             android:src="@drawable/ic_pstu" />
 
         <TextView
-            android:textStyle="bold"
             android:id="@+id/nameTextView"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/partyTextView"
             android:layout_alignParentTop="true"
-            android:layout_alignStart="@+id/partyTextView"
             android:layout_marginRight="@dimen/half_space_default"
+            android:layout_marginTop="@dimen/half_space_default"
             android:layout_toLeftOf="@+id/favoriteCheckBox"
             android:text="Suzi Rego Grande"
-            android:textSize="13sp" />
+            android:textSize="13sp"
+            android:textStyle="bold"
+            android:layout_alignLeft="@+id/statusTextView"
+            android:layout_alignStart="@+id/statusTextView" />
 
         <CheckBox
             android:id="@+id/favoriteCheckBox"
-            style="?android:attr/starStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
             android:layout_alignTop="@+id/nameTextView"
-            android:layout_marginRight="@dimen/half_space_default" />
+            android:layout_marginRight="@dimen/half_space_default"
+            android:button="@drawable/checkbox_star" />
 
         <TextView
             android:id="@+id/partyTextView"
-            android:layout_width="fill_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="PSTU - 16"
+            android:textSize="12sp"
             android:layout_alignBottom="@+id/favoriteCheckBox"
             android:layout_alignLeft="@+id/statusTextView"
             android:layout_alignStart="@+id/statusTextView"
             android:layout_below="@+id/nameTextView"
-            android:layout_marginRight="@dimen/half_space_default"
-            android:layout_toLeftOf="@+id/favoriteCheckBox"
-            android:text="PSTU - 16"
-            android:textSize="13sp" />
+            android:layout_alignRight="@+id/nameTextView"
+            android:layout_alignEnd="@+id/nameTextView" />
 
         <TextView
             android:id="@+id/statusTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/partyTextView"
-            android:layout_marginLeft="@dimen/half_space_default"
-            android:layout_toEndOf="@+id/partyImageView"
-            android:layout_toLeftOf="@+id/favoriteCheckBox"
-            android:layout_toRightOf="@+id/partyImageView"
             android:text="Suplente"
-            android:textSize="13sp" />
+            android:textSize="12sp"
+            android:layout_below="@+id/partyTextView"
+            android:layout_toRightOf="@+id/partyImageView"
+            android:layout_toEndOf="@+id/partyImageView" />
 
 
     </RelativeLayout>

@@ -1,26 +1,19 @@
 package hackpuc.vedor.activitys;
 
-import android.os.Parcelable;
+import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import hackpuc.vedor.R;
 import hackpuc.vedor.adapter.CandidateAdapter;
-import hackpuc.vedor.objects.Politic;
 
 public class CandidateActivity extends AppCompatActivity {
 
     private ListView listView;
 
-    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_candidate);
@@ -37,7 +30,6 @@ public class CandidateActivity extends AppCompatActivity {
         listView.setAdapter(candidateAdapter);
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
             }

@@ -8,4 +8,6 @@
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="space_default">20dp</dimen>
     <dimen name="half_space_default">10dp</dimen>
+    <dimen name="minimum_space">8dp</dimen>
+
 </resources>

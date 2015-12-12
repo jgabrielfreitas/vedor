@@ -23,8 +23,8 @@ import hackpuc.vedor.item.StateItem;
  */
 public class MainFragment extends Fragment implements AdapterView.OnItemClickListener{
 
-    private View view;
     private ListView listView;
+    private View     view;
 
     private List<StateItem> stateItemList;
 
