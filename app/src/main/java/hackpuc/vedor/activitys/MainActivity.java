@@ -1,5 +1,6 @@
 package hackpuc.vedor.activitys;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.ActivityCompat;
@@ -18,16 +19,25 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import com.parse.ParseException;
+import com.parse.ParseObject;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import hackpuc.vedor.R;
 import hackpuc.vedor.adapter.OfficeAdapter;
 import hackpuc.vedor.fragment.MainFragment;
+import hackpuc.vedor.interfaces.ParseCallback;
 import hackpuc.vedor.item.StateItem;
+import hackpuc.vedor.objects.Politic;
+import hackpuc.vedor.utils.ParseFields;
+import hackpuc.vedor.utils.ParseManager;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    public static List<Politic> politicList;
 
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -300,7 +310,29 @@ public class MainActivity extends AppCompatActivity
 
             listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    Log.w("List", ""+ position);
+                    // create request here and sent
+                    ParseManager.createCustomParserRequest(getActivity()).setWorkInBackground(false)
+                            .setDialogMessage("Carregando...")
+                            .addWhereEqualsTo(ParseFields.POLITIC_CARGO, ((OfficeAdapter) listView.getAdapter()).getItem(position).toUpperCase())
+                            .setParseCallback(new ParseCallback() {
+                                public void onSuccess(List<ParseObject> parseObjects) {
+
+                                    politicList = new ArrayList<>();
+
+                                    for (ParseObject parseObject : parseObjects) {
+                                        Log.e("Response", "Name:" + new Politic(parseObject));
+                                        politicList.add(new Politic(parseObject));
+                                    }
+//                                  Log.e("Response", "Total of rows: " + parseObjects.size());
+                                    Intent intent = new Intent(getActivity(), CandidateActivity.class);
+                                    intent.putExtra("from", "main");
+                                    startActivity(intent);
+                                }
+
+                                public void onError(ParseException e) {
+
+                                }
+                            }).doRequest();
                 }
             });
 

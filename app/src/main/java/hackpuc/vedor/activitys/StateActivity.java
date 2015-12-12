@@ -80,7 +80,9 @@ public class StateActivity extends AppCompatActivity {
                             politicList.add(new Politic(parseObject));
                         }
 //                        Log.e("Response", "Total of rows: " + parseObjects.size());
-                        startActivity(new Intent(StateActivity.this, CandidateActivity.class));
+                        Intent intent = new Intent(StateActivity.this, CandidateActivity.class);
+                        intent.putExtra("from", "state");
+                        startActivity(intent);
                     }
 
                     public void onError(ParseException e) {

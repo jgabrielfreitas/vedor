@@ -13,6 +13,8 @@ import hackpuc.vedor.adapter.CandidateAdapter;
 public class CandidateActivity extends AppCompatActivity {
 
     private ListView listView;
+    private String from;
+    private CandidateAdapter candidateAdapter;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,8 +25,16 @@ public class CandidateActivity extends AppCompatActivity {
         if (actionBar != null)
             actionBar.setDisplayHomeAsUpEnabled(true);
 
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            from = extras.getString("from");
+        }
 
-        CandidateAdapter candidateAdapter = new CandidateAdapter(CandidateActivity.this, StateActivity.politicList);
+        if(from.equals("state") == true)
+            candidateAdapter = new CandidateAdapter(CandidateActivity.this, StateActivity.politicList);
+        else
+            candidateAdapter = new CandidateAdapter(CandidateActivity.this, MainActivity.politicList);
+
         listView = (ListView) findViewById(R.id.listView);
 
         listView.setAdapter(candidateAdapter);
