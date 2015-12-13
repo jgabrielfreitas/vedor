@@ -53,7 +53,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
 			convertView = infalInflater.inflate(R.layout.expandable_item, null);
 		}
 
-		CardView cardView =  (CardView) convertView.findViewById(R.id.cardView);
+//		CardView cardView =  (CardView) convertView.findViewById(R.id.cardView);
 
 		ImageView partyImageView   = (ImageView) convertView.findViewById(R.id.partyImageView);
 		TextView nameTextView     = (TextView) convertView.findViewById(R.id.nameTextView);
@@ -75,12 +75,12 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
 		statusImageView.setImageResource(politic.getCandidateTurnDescription());
 		partyTextView.setText(politic.getCandidateTurnDescription());*/
 
-		cardView.setOnClickListener(new View.OnClickListener() {
+		/*cardView.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				Log.w("Dentro adapter", ""+childPosition);
 			}
-		});
+		});*/
 
 		return convertView;
 	}

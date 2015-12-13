@@ -14,7 +14,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Jaíson Bourne"
-        android:textSize="22sp"
+        android:textSize="15sp"
         android:textStyle="bold" />
 
     <ImageView
@@ -91,6 +91,18 @@
         android:background="@drawable/button_only_margin"
         android:text="ENVIAR E-MAIL"
         android:textColor="@drawable/text_selector" />
+
+    <TextView
+        android:id="@+id/disclaimerTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/sendEmailButton"
+        android:layout_marginTop="40dp"
+        android:gravity="center_horizontal"
+        android:text="Esse e-mail é enviado de forma anônima, preservando a sua privacidade e não revelando nenhum dos seus dados para terceiros"
+        android:textSize="12sp"
+        android:textStyle="bold" />
+
 
 
 </RelativeLayout>

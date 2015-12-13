@@ -3,6 +3,7 @@ package hackpuc.vedor.activitys;
 import android.content.DialogInterface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
@@ -10,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import hackpuc.vedor.R;
+import hackpuc.vedor.utils.Mask;
 import hackpuc.vedor.utils.Utils;
 
 public class DetailsActivity extends AppCompatActivity implements View.OnClickListener{
@@ -40,7 +42,7 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
             nameCandidateTextView.setText(extras.getString("name"));
             partyImageView.setImageResource(Utils.inputBrandParty(extras.getString("party")));
             partyTextView.setText(extras.getString("number") + " - " + extras.getString("party"));
-            documentTextView.setText(extras.getString("cpf"));
+            documentTextView.setText(Utils.formatCpf(extras.getString("cpf")));
             if (extras.getString("email").equals("NULL") == true){
                 emailAutoCompleteTextView.setEnabled(false);
                 sendEmailButton.setEnabled(false);

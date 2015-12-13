@@ -111,4 +111,45 @@ public class Utils {
                 return R.drawable.ic_pstu;
         }
     }
+
+    public static String format(String value, String mask) {
+
+        String data = new String();
+
+        for (int i = 0; i < value.length(); i++) {
+            char c = value.charAt(i);
+            if (Character.isDigit(c)) {
+                data += c;
+            }
+        }
+
+        int indMask = mask.length();
+        int indField = data.length();
+
+        for (; indField > 0 && indMask > 0; ) {
+            if (mask.charAt(--indMask) == '#') {
+                indField--;
+            }
+        }
+
+        String exit = new String();
+        for (; indMask < mask.length(); indMask++) {
+            exit += ((mask.charAt(indMask) == '#') ? data.charAt(indField++) : mask.charAt(indMask));
+        }
+        return exit;
+    }
+
+    public static String formatCpf(String cpf) {
+        while (cpf.length() < 11) {
+            cpf = "0" + cpf;
+        }
+        return format(cpf, "###.###.###-##");
+    }
+
+    public static String formatCnpj(String cnpj) {
+        while (cnpj.length() < 14) {
+            cnpj = "0" + cnpj;
+        }
+        return format(cnpj, "##.###.###/####-##");
+    }
 }
