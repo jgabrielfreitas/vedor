@@ -19,8 +19,8 @@ import hackpuc.vedor.R;
 import hackpuc.vedor.adapter.OfficeAdapter;
 import hackpuc.vedor.interfaces.ParseCallback;
 import hackpuc.vedor.objects.Politic;
-import hackpuc.vedor.utils.ParseFields;
-import hackpuc.vedor.utils.ParseManager;
+import hackpuc.vedor.parse.ParseFields;
+import hackpuc.vedor.parse.ParseManager;
 
 public class StateActivity extends AppCompatActivity {
 

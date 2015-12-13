@@ -51,9 +51,18 @@
             android:name="FAVORITES_DB_VERSION"
             android:value="1" />
 
-        <activity android:name=".activitys.DetailsActivity"
+        <activity
+            android:name=".activitys.DetailsActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/details" />
+        <activity
+            android:name=".activitys.LoginActivity"
+            android:label="@string/title_activity_login"
+            android:theme="@style/AppTheme" />
+
+        <activity android:name=".activitys.CreateAccountActivity"
+            android:label="Criar conta"
+            android:theme="@style/AppTheme" />
     </application>
 
 </manifest>

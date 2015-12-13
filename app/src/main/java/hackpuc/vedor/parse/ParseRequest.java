@@ -1,4 +1,4 @@
-package hackpuc.vedor.utils;
+package hackpuc.vedor.parse;
 
 
 import com.parse.FindCallback;

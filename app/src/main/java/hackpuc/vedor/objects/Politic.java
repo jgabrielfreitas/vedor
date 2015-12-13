@@ -2,7 +2,7 @@ package hackpuc.vedor.objects;
 
 import com.parse.ParseObject;
 
-import hackpuc.vedor.utils.ParseFields;
+import hackpuc.vedor.parse.ParseFields;
 
 /**
  * Created by JGabrielFreitas on 12/12/15.

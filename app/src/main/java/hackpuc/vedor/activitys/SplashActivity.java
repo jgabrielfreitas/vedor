@@ -19,8 +19,9 @@ import java.util.List;
 import hackpuc.vedor.R;
 import hackpuc.vedor.interfaces.ParseCallback;
 import hackpuc.vedor.objects.Politic;
-import hackpuc.vedor.utils.ParseFields;
-import hackpuc.vedor.utils.ParseManager;
+import hackpuc.vedor.parse.ParseFields;
+import hackpuc.vedor.parse.ParseManager;
+import hackpuc.vedor.utils.ApplicationCache;
 import hackpuc.vedor.utils.Utils;
 
 public class SplashActivity extends AppCompatActivity implements View.OnClickListener{
@@ -71,7 +72,11 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
                                 Politic politic = new Politic(object);
                                 Log.e("Name", "Name: " + politic.getCandidateName());
                             }
-                            startActivity(new Intent(SplashActivity.this, MainActivity.class));
+
+                            if(new ApplicationCache(getApplicationContext()).checkIfCacheExists(Utils.FILE_USER))
+                                startActivity(new Intent(SplashActivity.this, MainActivity.class));
+                            else
+                                startActivity(new Intent(SplashActivity.this, LoginActivity.class));
                             finish();
                         }
 

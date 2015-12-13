@@ -3,13 +3,11 @@ package hackpuc.vedor.activitys;
 import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.GravityCompat;
-import android.support.v4.view.MenuItemCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
@@ -22,20 +20,14 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 
 import com.activeandroid.Model;
 import com.activeandroid.query.Select;
-import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseObject;
-import com.parse.ParseQuery;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,8 +39,8 @@ import hackpuc.vedor.fragment.MainFragment;
 import hackpuc.vedor.interfaces.ParseCallback;
 import hackpuc.vedor.item.StateItem;
 import hackpuc.vedor.objects.Politic;
-import hackpuc.vedor.utils.ParseFields;
-import hackpuc.vedor.utils.ParseManager;
+import hackpuc.vedor.parse.ParseFields;
+import hackpuc.vedor.parse.ParseManager;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {

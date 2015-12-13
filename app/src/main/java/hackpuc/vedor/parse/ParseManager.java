@@ -1,4 +1,4 @@
-package hackpuc.vedor.utils;
+package hackpuc.vedor.parse;
 
 import android.content.Context;
 
@@ -15,5 +15,9 @@ public class ParseManager {
 
     public static CustomParseRequest createCustomParserRequest(Context context) {
         return new CustomParseRequest(context, POLITICS);
+    }
+
+    public static ParseLoginRequest createLogin(String user, String password) {
+        return new ParseLoginRequest(user, password);
     }
 }
