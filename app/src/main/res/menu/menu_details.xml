@@ -8,4 +8,10 @@
         android:title="Criar post"
         app:showAsAction="ifRoom"/>
 
+    <item
+        android:id="@+id/read_feed"
+        android:icon="@drawable/ic_action_content_sort"
+        android:title="Ler feed"
+        app:showAsAction="ifRoom"/>
+
 </menu>

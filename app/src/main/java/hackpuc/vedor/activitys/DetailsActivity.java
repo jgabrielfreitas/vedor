@@ -57,7 +57,6 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
         emailAutoCompleteTextView = (AutoCompleteTextView) findViewById(R.id.emailAutoCompleteTextView);
 
         sendEmailButton.setOnClickListener(this);
-
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -110,6 +109,11 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
                 Intent intent = new Intent(this, CreatePostActivity.class);
                 intent.putExtra("candidateId", candidateId);
                 startActivity(intent);
+                break;
+            case R.id.read_feed:
+                Intent intent2 = new Intent(this, CreatePostActivity.class);
+                intent2.putExtra("candidateId", candidateId);
+                startActivity(intent2);
                 break;
         }
         return super.onOptionsItemSelected(item);

@@ -63,7 +63,8 @@
             android:name=".activitys.CreateAccountActivity"
             android:label="Criar conta"
             android:theme="@style/AppTheme" />
-        <activity android:name=".activitys.CreatePostActivity"></activity>
+        <activity android:name=".activitys.CreatePostActivity" />
+        <activity android:name=".activitys.FeedActivity"></activity>
     </application>
 
 </manifest>
