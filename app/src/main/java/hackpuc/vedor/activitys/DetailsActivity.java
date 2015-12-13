@@ -111,7 +111,7 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
                 startActivity(intent);
                 break;
             case R.id.read_feed:
-                Intent intent2 = new Intent(this, CreatePostActivity.class);
+                Intent intent2 = new Intent(this, FeedActivity.class);
                 intent2.putExtra("candidateId", candidateId);
                 startActivity(intent2);
                 break;

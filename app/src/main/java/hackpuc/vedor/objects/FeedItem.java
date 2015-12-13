@@ -32,5 +32,4 @@ public class FeedItem {
         this.link = link;
     }
 
-
 }

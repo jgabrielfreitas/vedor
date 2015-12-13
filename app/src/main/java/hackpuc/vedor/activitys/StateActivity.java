@@ -73,6 +73,7 @@ public class StateActivity extends AppCompatActivity {
                 // create request here and sent
                 ParseManager.createCustomParserRequest(StateActivity.this).setWorkInBackground(false)
                         .setDialogMessage("Carregando...")
+                        .addWhereEqualsTo(ParseFields.POLITIC_NUM_TURNO, "1")
                         .addWhereEqualsTo(ParseFields.POLITIC_UF, statusCode)
                         .addWhereEqualsTo(ParseFields.POLITIC_CARGO, ((OfficeAdapter) listView.getAdapter()).getItem(position).toUpperCase())
                         .setParseCallback(new ParseCallback() {
