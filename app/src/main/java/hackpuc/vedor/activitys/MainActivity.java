@@ -70,9 +70,15 @@ public class MainActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
+            return;
         }
+
+        // back activity
+        // (if has no fragment in stack)
+        if (getSupportFragmentManager().getBackStackEntryCount() == 0)
+            super.onBackPressed();
+        else //additional code
+            getSupportFragmentManager().popBackStack();
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -88,11 +94,12 @@ public class MainActivity extends AppCompatActivity
 
         final ImageView mCloseButton = (ImageView) searchView.findViewById(R.id.search_close_btn);
 
-        SearchView.OnQueryTextListener searchListener = new SearchView.OnQueryTextListener(){
+        SearchView.OnQueryTextListener searchListener = new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextChange(String arg0) {
                 return false;
             }
+
             @Override
             public boolean onQueryTextSubmit(String query) {
                 Log.w("TAG", query);
@@ -152,7 +159,7 @@ public class MainActivity extends AppCompatActivity
         MainFragment mainFragment = new MainFragment();
         List<StateItem> stateItemList = new ArrayList<>();
 
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
 
             case R.id.nav_br:
                 getSupportActionBar().setTitle("Brasil");
@@ -173,7 +180,7 @@ public class MainActivity extends AppCompatActivity
                 stateItemList.add(new StateItem(R.drawable.ic_alagoas, "Alagoas", "AL"));
                 stateItemList.add(new StateItem(R.drawable.ic_bahia, "Bahia", "BA"));
                 stateItemList.add(new StateItem(R.drawable.ic_ceara, "Ceará", "CE"));
-                stateItemList.add(new StateItem(R.drawable.ic_maranhao, "Maranhão","MA"));
+                stateItemList.add(new StateItem(R.drawable.ic_maranhao, "Maranhão", "MA"));
                 stateItemList.add(new StateItem(R.drawable.ic_paraiba, "Paraíba", "PB"));
                 stateItemList.add(new StateItem(R.drawable.ic_pernambuco, "Pernambuco", "PE"));
                 stateItemList.add(new StateItem(R.drawable.ic_piaui, "Piauí", "PI"));
@@ -220,7 +227,7 @@ public class MainActivity extends AppCompatActivity
 
         if (stateItemList.isEmpty() == false) {
             mainFragment.setStateItemList(stateItemList);
-            getSupportFragmentManager().beginTransaction().replace(R.id.container, mainFragment).commit();
+            getSupportFragmentManager().beginTransaction().replace(R.id.container, mainFragment).addToBackStack(null).commit();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -244,7 +251,7 @@ public class MainActivity extends AppCompatActivity
 
         /**
          * GET ALL ORDERS AND SHOW
-         * */
+         */
         private void instanceViewsFragmentAll(View view) {
 
             List<String> offStringList = new ArrayList<>();
