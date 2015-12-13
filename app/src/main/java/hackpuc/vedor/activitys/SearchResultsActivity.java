@@ -1,21 +1,16 @@
 package hackpuc.vedor.activitys;
 
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-
-import hackpuc.vedor.R;
-
 import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
-import android.widget.ImageView;
-import android.widget.Toast;
+
+import hackpuc.vedor.R;
 
 public class SearchResultsActivity extends AppCompatActivity {
 

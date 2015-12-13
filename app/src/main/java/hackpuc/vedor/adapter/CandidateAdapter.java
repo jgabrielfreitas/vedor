@@ -17,7 +17,6 @@ import com.activeandroid.query.Select;
 import java.util.List;
 
 import hackpuc.vedor.R;
-import hackpuc.vedor.activitys.SplashActivity;
 import hackpuc.vedor.database.Favorite;
 import hackpuc.vedor.objects.Politic;
 import hackpuc.vedor.utils.Utils;
