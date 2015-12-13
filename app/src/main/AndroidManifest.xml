@@ -59,10 +59,11 @@
             android:name=".activitys.LoginActivity"
             android:label="@string/title_activity_login"
             android:theme="@style/AppTheme" />
-
-        <activity android:name=".activitys.CreateAccountActivity"
+        <activity
+            android:name=".activitys.CreateAccountActivity"
             android:label="Criar conta"
             android:theme="@style/AppTheme" />
+        <activity android:name=".activitys.CreatePostActivity"></activity>
     </application>
 
 </manifest>

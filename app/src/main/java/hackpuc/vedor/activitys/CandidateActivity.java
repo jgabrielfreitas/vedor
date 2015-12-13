@@ -32,7 +32,6 @@ public class CandidateActivity extends AppCompatActivity {
         setContentView(R.layout.activity_candidate);
     }
 
-    @Override
     protected void onResume() {
         super.onResume();
 
@@ -69,6 +68,7 @@ public class CandidateActivity extends AppCompatActivity {
                 intent.putExtra("name", politic.getCandidateName());
                 intent.putExtra("party", politic.getCandidatePartyInitials());
                 intent.putExtra("number", politic.getCandidatePartyNumber());
+                intent.putExtra("candidateId", politic.getObjectId());
                 intent.putExtra("cpf", politic.getCandidateDocumentNumber().replaceAll("[\\D]", ""));
                 intent.putExtra("email", politic.getCandidateEmail());
                 startActivity(intent);
