@@ -243,10 +243,13 @@ public class MainActivity extends AppCompatActivity
     }
 
     // fragments to inflate
-    public class StateFragment extends Fragment {
+    public static class StateFragment extends Fragment {
 
         private View view;
         private ListView listView;
+
+        public StateFragment() {
+        }
 
         public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
