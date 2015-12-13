@@ -22,6 +22,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 
 import com.activeandroid.Model;
@@ -47,6 +48,8 @@ public class MainActivity extends AppCompatActivity
 
     public static List<Politic> politicList;
 
+    private LinearLayout inicialScreen;
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -62,13 +65,11 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-    }
+        inicialScreen = (LinearLayout) findViewById(R.id.inicialScreen);
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        getSupportActionBar().setTitle("Brasil");
-        getSupportFragmentManager().beginTransaction().replace(R.id.container, new StateFragment()).commit();
+        getSupportActionBar().setTitle("Vedor");
+        inicialScreen.setVisibility(View.VISIBLE);
+
     }
 
     public void onBackPressed() {
@@ -216,6 +217,8 @@ public class MainActivity extends AppCompatActivity
                 ActivityCompat.finishAffinity(this);
                 break;
         }
+
+        inicialScreen.setVisibility(View.INVISIBLE);
 
         if (stateItemList.isEmpty() == false) {
             mainFragment.setStateItemList(stateItemList);

@@ -61,10 +61,16 @@
             android:theme="@style/AppTheme" />
         <activity
             android:name=".activitys.CreateAccountActivity"
-            android:label="Criar conta"
+            android:label="@string/create_account"
             android:theme="@style/AppTheme" />
-        <activity android:name=".activitys.CreatePostActivity" />
-        <activity android:name=".activitys.FeedActivity"></activity>
+        <activity
+            android:name=".activitys.CreatePostActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/create_post" />
+        <activity
+            android:name=".activitys.FeedActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/feed" />
     </application>
 
 </manifest>
