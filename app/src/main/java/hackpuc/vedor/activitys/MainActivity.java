@@ -21,6 +21,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -49,6 +50,7 @@ public class MainActivity extends AppCompatActivity
     public static List<Politic> politicList;
 
     private LinearLayout inicialScreen;
+    private FrameLayout contanierFrameLayout;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,6 +68,8 @@ public class MainActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
         inicialScreen = (LinearLayout) findViewById(R.id.inicialScreen);
+
+        contanierFrameLayout = (FrameLayout) findViewById(R.id.container);
 
         getSupportActionBar().setTitle("Vedor");
         inicialScreen.setVisibility(View.VISIBLE);
@@ -202,6 +206,11 @@ public class MainActivity extends AppCompatActivity
                 break;
             case R.id.nav_check:
 
+                getSupportActionBar().setTitle("Vedor");
+                inicialScreen.setVisibility(View.VISIBLE);
+
+                contanierFrameLayout.setVisibility(View.INVISIBLE);
+
                 politicList = new ArrayList<>();
 
                 Select select = new Select();
@@ -218,7 +227,10 @@ public class MainActivity extends AppCompatActivity
                 break;
         }
 
-        inicialScreen.setVisibility(View.INVISIBLE);
+        if (item.getItemId() != R.id.nav_check) {
+            inicialScreen.setVisibility(View.INVISIBLE);
+            contanierFrameLayout.setVisibility(View.VISIBLE);
+        }
 
         if (stateItemList.isEmpty() == false) {
             mainFragment.setStateItemList(stateItemList);
