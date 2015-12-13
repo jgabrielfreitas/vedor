@@ -32,6 +32,11 @@ public class StateActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_state);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
 
         // Insert return icon in the action bar
         ActionBar actionBar = getSupportActionBar();
@@ -67,28 +72,28 @@ public class StateActivity extends AppCompatActivity {
 
                 // create request here and sent
                 ParseManager.createCustomParserRequest(StateActivity.this).setWorkInBackground(false)
-                            .setDialogMessage("Carregando...")
+                        .setDialogMessage("Carregando...")
                         .addWhereEqualsTo(ParseFields.POLITIC_UF, statusCode)
                         .addWhereEqualsTo(ParseFields.POLITIC_CARGO, ((OfficeAdapter) listView.getAdapter()).getItem(position).toUpperCase())
-                .setParseCallback(new ParseCallback() {
-                    public void onSuccess(List<ParseObject> parseObjects) {
+                        .setParseCallback(new ParseCallback() {
+                            public void onSuccess(List<ParseObject> parseObjects) {
 
-                        politicList = new ArrayList<>();
+                                politicList = new ArrayList<>();
 
-                        for (ParseObject parseObject : parseObjects) {
-                            Log.e("Response", "Name:" + new Politic(parseObject));
-                            politicList.add(new Politic(parseObject));
-                        }
+                                for (ParseObject parseObject : parseObjects) {
+                                    Log.e("Response", "Name:" + new Politic(parseObject));
+                                    politicList.add(new Politic(parseObject));
+                                }
 //                        Log.e("Response", "Total of rows: " + parseObjects.size());
-                        Intent intent = new Intent(StateActivity.this, CandidateActivity.class);
-                        intent.putExtra("from", "state");
-                        startActivity(intent);
-                    }
+                                Intent intent = new Intent(StateActivity.this, CandidateActivity.class);
+                                intent.putExtra("from", "state");
+                                startActivity(intent);
+                            }
 
-                    public void onError(ParseException e) {
+                            public void onError(ParseException e) {
 
-                    }
-                }).doRequest();
+                            }
+                        }).doRequest();
             }
         });
     }

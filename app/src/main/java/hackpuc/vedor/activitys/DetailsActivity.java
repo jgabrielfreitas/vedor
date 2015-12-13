@@ -40,15 +40,16 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
 
         sendEmailButton.setOnClickListener(this);
 
-        // Insert return icon in the action bar
-        ActionBar actionBar = getSupportActionBar();
-        if (actionBar != null)
-            actionBar.setDisplayHomeAsUpEnabled(true);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
+
+        // Insert return icon in the action bar
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null)
+            actionBar.setDisplayHomeAsUpEnabled(true);
 
         Bundle extras = getIntent().getExtras();
         if (extras != null) {

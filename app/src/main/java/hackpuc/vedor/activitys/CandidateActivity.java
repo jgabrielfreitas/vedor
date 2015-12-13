@@ -30,6 +30,11 @@ public class CandidateActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_candidate);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
 
         // Insert return icon in the action bar
         ActionBar actionBar = getSupportActionBar();

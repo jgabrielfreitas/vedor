@@ -62,6 +62,11 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
         getSupportActionBar().setTitle("Brasil");
         getSupportFragmentManager().beginTransaction().replace(R.id.container, new StateFragment()).commit();
     }
@@ -77,8 +82,9 @@ public class MainActivity extends AppCompatActivity
         // (if has no fragment in stack)
         if (getSupportFragmentManager().getBackStackEntryCount() == 0)
             super.onBackPressed();
-        else //additional code
+        else  //additional code
             getSupportFragmentManager().popBackStack();
+
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -227,7 +233,7 @@ public class MainActivity extends AppCompatActivity
 
         if (stateItemList.isEmpty() == false) {
             mainFragment.setStateItemList(stateItemList);
-            getSupportFragmentManager().beginTransaction().replace(R.id.container, mainFragment).addToBackStack(null).commit();
+            getSupportFragmentManager().beginTransaction().replace(R.id.container, mainFragment).commit();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
