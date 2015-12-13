@@ -51,7 +51,7 @@
             android:textSize="17sp"
             android:layout_marginTop="20dp"
             android:textColor="@color/colorPrimary"
-            android:text="O Aplicativo que acompanha a\nvida dos políticos" />
+            android:text="O aplicativo que acompanha a\nvida dos políticos" />
 
      </LinearLayout>
 
